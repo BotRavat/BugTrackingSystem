@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Login</title>
+
+  <style>
+    Body {
+      font-family: Calibri, Helvetica, sans-serif;
+      background-color: rgb(187, 149, 149);
+    }
+
+    button {
+      background-color: #000000;
+      width: 100%;
+      color: rgb(253, 253, 253);
+      padding: 15px;
+      margin: 10px 0px;
+      border: none;
+      cursor: pointer;
+    }
+
+    form {
+      border: 3px solid #f1f1f1;
+    }
+
+    input[type=text],
+    input[type=password] {
+      width: 100%;
+      margin: 8px 0;
+      padding: 12px 20px;
+      display: inline-block;
+      border: 2px solid green;
+      box-sizing: border-box;
+    }
+
+    button:hover {
+      opacity: 0.7;
+    }
+
+    .cancelbtn {
+      width: auto;
+      padding: 10px 18px;
+      margin: 10px 5px;
+    }
+
+
+    .container {
+      padding: 25px;
+      background-color: lightblue;
+    }
+  </style>
+</head>
+
+
+
+<body>
+
+  <!--Navigation Bar-->
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">BTS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/home">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/contact">Contact Us</a>
+        </li>
+      </ul>
+  </nav>
+
+
+
+  {% for message in messages %}
+<div class="alert alert-{{message.tags}} mb-3 alert-dismissible fade show" role="alert">
+  <strong>Message: </strong> {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times</span></button>
+</div>
+  {% endfor %}
+
+
+  <!--Login Form-->
+
+  <center>
+    <h1>Enter Login Details</h1>
+  </center>
+  <form  method='POST' action='/handlelogin'>
+    {%csrf_token%}
+    <div class="container">
+      <label>Username : </label>
+      <input type="text" id="loginusername" placeholder="Enter Username" name="loginusername" required>
+      <label>Password : </label>
+      <input type="password" id="loginpassword" placeholder="Enter Password" name="loginpassword" required>
+      <input type="checkbox" checked="checked"> Remember me
+      <!-- <a class="mx-5" href="#">Forgot password? </a> -->
+      <a class="mx-5 " href="/signup">Sign Up </a>
+
+      <button type="submit">Login</button>
+
+
+    </div>
+  </form>
+
+</body>
+
+</html>
